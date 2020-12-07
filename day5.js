@@ -31,4 +31,20 @@ const doPart1 = (input) => {
     return id > acc ? id : acc;
   }, 0);
 };
-console.log(doPart1(data));
+
+const doPart2 = (input) => {
+  const list = input
+    .map((curr) => {
+      const { row, column } = decode(curr);
+      const id = row.lower * 8 + column.lower;
+      return id;
+    })
+    .sort((a, b) => a - b);
+  const id = list.filter((item) => {
+    !list.includes(item + 1) && list.includes(item + 2) && console.log(item);
+    return !list.includes(item + 1) && list.includes(item + 2);
+  });
+  return id + 1;
+};
+
+console.log(doPart2(data));
